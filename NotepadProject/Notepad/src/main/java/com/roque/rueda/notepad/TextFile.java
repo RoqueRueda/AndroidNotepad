@@ -18,6 +18,7 @@ package com.roque.rueda.notepad;
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -113,7 +114,13 @@ public class TextFile {
                 osw = new OutputStreamWriter(fileOutputStream, ENCODING);
                 osw.write(content);
                 osw.flush();
-                Log.w(TAG, String.format("A new file is created named:%s", name));
+
+                String saveFileMessage = String.format("A new file is created named:%s", name);
+
+                Log.w(TAG, saveFileMessage);
+
+                Toast.makeText(mContext, saveFileMessage, Toast.LENGTH_SHORT).show();
+
                 return true;
             }
             finally {
