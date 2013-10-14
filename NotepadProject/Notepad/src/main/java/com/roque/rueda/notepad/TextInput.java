@@ -27,4 +27,6 @@ public interface TextInput {
      * @return user input.
      */
     CharSequence getText();
+
+    void setText(CharSequence text);
 }

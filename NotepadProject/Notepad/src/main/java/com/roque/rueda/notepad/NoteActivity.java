@@ -57,14 +57,23 @@ public class NoteActivity extends FragmentActivity {
         actionBar.setDisplayShowTitleEnabled(true);
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
+        mTextFile = new TextFile(this);
+
         if (savedInstanceState != null) {
             Fragment editTextFragment = new EditTextFragment();
             mTextInput = (TextInput) editTextFragment;
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, editTextFragment)
                     .commit();
-            String dummyContent = getString(R.string.app_name);
-            savedInstanceState.putString(Constants.ARG_TEXT_FILE, dummyContent);
+
+            try {
+                String dummyContent = mTextFile.getSDFileContent("test.txt");
+                savedInstanceState.putString(Constants.ARG_TEXT_FILE, dummyContent);
+            } catch (IOException e) {
+                Toast.makeText(this, getString(R.string.error_read_file), Toast.LENGTH_SHORT).show();
+            }
+
+
         }
         else {
             Fragment editTextFragment = new EditTextFragment();
@@ -87,8 +96,6 @@ public class NoteActivity extends FragmentActivity {
                                 getString(R.string.title_section3),
                         }),
                 this);*/
-
-        mTextFile = new TextFile(this);
     }
 
     /**
@@ -133,6 +140,7 @@ public class NoteActivity extends FragmentActivity {
         switch(item.getItemId()){
 
             case R.id.action_save:
+            {
                 try
                 {
                     mTextFile.createSDFile("test.txt", mTextInput.getText().toString());
@@ -141,8 +149,22 @@ public class NoteActivity extends FragmentActivity {
                 {
                     Toast.makeText(this, ioex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
                 return true;
+            }
+            case R.id.action_open:
+            {
+                try
+                {
+                    String content = mTextFile.getSDFileContent("test.txt");
+                    mTextInput.setText(content);
+
+                }
+                catch (IOException ioex)
+                {
+                    Toast.makeText(this, ioex.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
         }
         return false;
     }

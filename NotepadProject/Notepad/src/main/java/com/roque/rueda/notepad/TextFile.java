@@ -115,7 +115,7 @@ public class TextFile {
                 osw.write(content);
                 osw.flush();
 
-                String saveFileMessage = String.format("A new file is created named:%s", name);
+                String saveFileMessage = mContext.getString(R.string.save_file) + name;
 
                 Log.w(TAG, saveFileMessage);
 

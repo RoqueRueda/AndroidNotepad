@@ -52,4 +52,9 @@ public class EditTextFragment extends android.support.v4.app.Fragment implements
     public CharSequence getText() {
         return mEditText.getText();
     }
+
+    @Override
+    public void setText(CharSequence text) {
+        mEditText.setText(text);
+    }
 }

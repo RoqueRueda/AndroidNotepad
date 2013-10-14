@@ -3,5 +3,9 @@
         android:title="@string/action_save"
         android:orderInCategory="100"
         android:showAsAction="never" />
+    <item android:id="@+id/action_open"
+        android:title="@string/action_open"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
 </menu>
 
