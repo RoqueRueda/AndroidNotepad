@@ -56,5 +56,6 @@ public class EditTextFragment extends android.support.v4.app.Fragment implements
     @Override
     public void setText(CharSequence text) {
         mEditText.setText(text);
+        mEditText.setSelection(text.length());
     }
 }
