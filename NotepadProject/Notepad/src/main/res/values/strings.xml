@@ -8,5 +8,7 @@
     <string name="save_file">File saved:</string>
     <string name="error_read_file">Error reading file</string>
     <string name="action_open">Open</string>
+    <string name="title_activity_file_explorer">Notepad</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
